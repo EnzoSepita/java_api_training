@@ -13,7 +13,7 @@ public class Launcher {
             int port = Integer.parseInt(args[0]);
             System.out.println("Starting to listen on port " + port);
 
-            new Server().startServer(port, args.length > 1 ? args[1] : null);
+            new Server2().startServer(port, args.length > 1 ? args[1] : null);
         } catch (IOException e) {
             e.printStackTrace();
         }
