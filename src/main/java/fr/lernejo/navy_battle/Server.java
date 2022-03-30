@@ -17,7 +17,7 @@ public abstract class Server {
     protected final HttpClient client = HttpClient.newHttpClient();
     protected final Option<HttpServer> server =  new Option<>();
 
-    public void startServer(int port, String connectURL) throws IOException {
+    public void initServer(int port, String connectURL) throws IOException {
         var server = HttpServer.create(new InetSocketAddress(port), 0);
         this.server.set(server);
         server.setExecutor(Executors.newSingleThreadExecutor());
@@ -39,7 +39,7 @@ public abstract class Server {
             os.write(body.getBytes());
         }
     }
-    public JSONObject sendPOSTRequest(String url, JSONObject obj) throws IOException, InterruptedException {
+    public JSONObject POSTRequest(String url, JSONObject obj) throws IOException, InterruptedException {
         HttpRequest requetePost = HttpRequest.newBuilder()
             .uri(URI.create(url))
             .setHeader("Accept", "application/json")
@@ -51,7 +51,7 @@ public abstract class Server {
         return new JSONObject(response.body());
     }
 
-    public JSONObject sendGETRequest(String url) throws IOException, InterruptedException {
+    public JSONObject GETRequest(String url) throws IOException, InterruptedException {
         HttpRequest requeteGET = HttpRequest.newBuilder()
             .uri(URI.create(url))
             .setHeader("Accept", "application/json")
