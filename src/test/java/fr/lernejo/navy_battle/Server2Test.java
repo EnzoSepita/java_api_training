@@ -1,12 +1,13 @@
-package fr.lernejo.navy_battle;
+package fr.lernejo;
 
 import fr.lernejo.navy_battle.RequestHandler;
+import fr.lernejo.navy_battle.Server;
 import fr.lernejo.navy_battle.Server2;
-import fr.lernejo.navy_battle.prototypes.GameStatus;
+import fr.lernejo.navy_battle.Status;
 
 import java.io.IOException;
 
-public class HttpServerTest extends Server implements AutoCloseable {
+public class Server2Test extends Server2 implements AutoCloseable {
 
     final Object lock = new Object();
 
@@ -23,7 +24,7 @@ public class HttpServerTest extends Server implements AutoCloseable {
     }
 
     private boolean gameEnded() {
-        return gamePlay.get().getStatus() != GameStatus.ONGOING;
+        return game.get().getStatus() != Status.ONGOING;
     }
 
     private void checkForEnd() {

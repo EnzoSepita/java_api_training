@@ -1,10 +1,11 @@
-package fr.lernejo.navy_battle;
+package fr.lernejo;
 
+import fr.lernejo.navy_battle.ScenariosTest;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class PingTest extends ServerTest {
+public class PingServerTest extends ServerTest {
     @Test
     public void testPing() throws Exception {
         int port = getRandomPort(0);

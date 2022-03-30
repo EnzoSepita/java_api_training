@@ -1,4 +1,4 @@
-package fr.lernejo.navy_battle;
+package fr.lernejo;
 
 import org.json.JSONObject;
 
@@ -13,7 +13,7 @@ import java.util.Random;
 
 import static java.lang.Thread.sleep;
 
-public class BaseHttpTests {
+public class ServerTest {
     private final Random random = new SecureRandom();
     private final HttpClient client = HttpClient.newHttpClient();
 
