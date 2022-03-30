@@ -40,8 +40,6 @@ public class Server2 extends Server {
             handler.sendJSON(202, localServer.get().toJSON());
 
             fire();
-
-
         } catch (Exception e) {
             e.printStackTrace();
             handler.sendString(400, e.getMessage());
