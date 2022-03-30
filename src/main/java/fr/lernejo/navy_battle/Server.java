@@ -15,18 +15,20 @@ import java.util.concurrent.Executors;
 
 public abstract class Server {
     protected final HttpClient client = HttpClient.newHttpClient();
+    protected final Option<HttpServer> server =  new Option<>();
 
     public void startServer(int port, String connectURL) throws IOException {
         var server = HttpServer.create(new InetSocketAddress(port), 0);
+        this.server.set(server);
         server.setExecutor(Executors.newSingleThreadExecutor());
         server.createContext("/ping", this::handlePing);
         createContextes(server);
         server.start();
     }
 
-   /* public void stopServer() {
+    public void stopServer() {
         this.server.get().stop(0);
-    }*/
+    }
 
     public abstract void createContextes(HttpServer server);
 
@@ -49,9 +51,6 @@ public abstract class Server {
         return new JSONObject(response.body());
     }
 
-    /**
-     * Send GET request
-     */
     public JSONObject sendGETRequest(String url) throws IOException, InterruptedException {
         HttpRequest requeteGET = HttpRequest.newBuilder()
             .uri(URI.create(url))

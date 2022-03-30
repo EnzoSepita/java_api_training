@@ -9,6 +9,7 @@ public class Option<T> {
     public Option() { }
 
     public Option(T obj) {
+
         set(obj);
     }
 
@@ -18,6 +19,7 @@ public class Option<T> {
     }
 
     public boolean isEmpty() {
+
         return  list.isEmpty();
     }
 

@@ -17,6 +17,8 @@ public class Server2 extends Server {
             "hello world !"
         ));
 
+        if (connectURL != null)
+            new Thread(() -> this.requestStart(connectURL)).start();
 
 
         super.startServer(port, connectURL);
@@ -36,6 +38,19 @@ public class Server2 extends Server {
         } catch (Exception e) {
             e.printStackTrace();
             handler.sendString(400, e.getMessage());
+        }
+    }
+    public void requestStart(String server) {
+        try {
+            this.remoteServer.set(new ServerInfo("temp", server, "good luck"));
+            var response = sendPOSTRequest(server + "/api/game/start", this.localServer.get().toJSON());
+
+            this.remoteServer.set(ServerInfo.fromJSON(response).withURL(server));
+            System.out.println("Will fight against " + remoteServer.get().getUrl());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.err.println("Failed to start game!");
         }
     }
 

@@ -15,14 +15,17 @@ public class ServerInfo {
     }
 
     public String getId() {
+
         return id;
     }
 
     public String getUrl() {
+
         return url;
     }
 
     public String getMessage() {
+
         return message;
     }
 

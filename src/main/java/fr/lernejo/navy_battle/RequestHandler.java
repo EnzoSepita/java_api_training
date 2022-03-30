@@ -11,6 +11,7 @@ public class RequestHandler {
     private final HttpExchange exchange;
 
     public RequestHandler(HttpExchange exchange) {
+
         this.exchange = exchange;
     }
 
@@ -28,7 +29,7 @@ public class RequestHandler {
     }
 
     /**
-     * Get a query parameter included in the request
+     * récupère le parametre inclus dans la requête
      */
     public String getQueryParameter(String name) throws IOException {
         for (var key : exchange.getRequestURI().getQuery().split("&")) {
